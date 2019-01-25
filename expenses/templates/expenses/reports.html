@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+
+{% block content %}
+<form method="post">
+	{% csrf_token%}
+	Month:<select name="month">
+		<optgroup>
+			<option value=1>JAN</option>
+			<option value=2>FEB</option>
+			<option value=3>MAR</option>
+			<option value=4>APR</option>
+			<option value=5>MAY</option>
+			<option value=6>JUNE</option>
+			<option value=7>JULY</option>
+			<option value=8>AUG</option>
+			<option value=9>SEP</option>
+			<option value=10>OCT</option>
+			<option value=11>NOV</option>
+			<option value=12>DEC</option>
+		</optgroup>
+	</select>
+	<input type="submit" name="">
+</form>
+<h2>expenses</h2>
+<table border=2>
+	<tr>
+		<th>comment</th>
+		<th>datetime</th>
+		<th>amount</th>
+		<th>user</th>
+	</tr>
+	{% for object in object_list%}
+		<tr>
+			<td>{{ object.comment }}</td>
+			<td>{{ object.datetime }}</td>
+			<td>{{ object.amount }}</td>
+			<td>{{ object.user.name }}</td>
+			
+		</tr>
+	{% endfor %}
+	<tr>
+			<td></td>
+			<td></td>
+			<td>{{ exp_sum }}</td>
+		</tr>
+</table>
+{% endblock %}
